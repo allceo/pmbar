@@ -306,3 +306,69 @@ Encode是将结构体传递过来，但是Decode的函数参数却是一个point
     fmt.Println("服务端返回：")
     fmt.Println(revmsg.Name)
     fmt.Println(revmsg.Age)
+    
+12.手动内存管理
+--------
+Go 语言是自带GC的, 相对C语言等的手动内存管理省事很多, 弊端便是会消耗更多的内存, 以及在GC时导致整个程序的停顿. 在某些特殊场合, 如果能够可选地手动进行内存管理, 效果会好不少.
+
+目前Go对内存的使用是贪婪的, 一旦向系统申请了就不再释放, 进一步增大了内存消耗(但不是泄露). 整体看来, 对某些有大量临时内存的应用, 内存消耗量可能会是同样功能的C程序10倍, 甚至更多. 
+
+runtime 模块有 Alloc() 和 Free(), 能够申请后释放内存, 通过refect模块做类型转换后能够给buffer使用. 但是它申请和释放的内存也是有GC统一管理的, 一旦申请就不再还给系统. 因此我们需要把系统的malloc() 和 free() 直接封装了给Go调用, 通过 CGO 可以简单实现, 如下:
+
+    package cmem
+    
+    /*
+    #include <stdlib.h>
+    */
+    import "C"
+    import "unsafe"
+    
+    var alloced int64
+    var alloc_ch chan int64
+    
+    func init() {
+    	alloc_ch = make(chan int64, 10)
+    	go func() {
+    		for i := range alloc_ch {
+    			alloced += i
+    		}
+    	}()
+    }
+    
+    func Alloc(size uintptr) *byte {
+    	alloc_ch <- int64(size)
+    	return (*byte)(C.malloc(C.size_t(size)))
+    }
+    
+    func Free(ptr *byte, size uintptr) {
+    	alloc_ch <- -int64(size)
+    	C.free(unsafe.Pointer(ptr))
+    }
+    
+    func Alloced() int64 {
+    	return alloced
+    }
+在需要使用手动分配内存的地方:
+
+    //item.Body = make([]byte, length)
+    item.alloc = cmem.Alloc(uintptr(length))
+    item.Body = (*[1 << 30]byte)(unsafe.Pointer(item.alloc))[:length]
+    (*reflect.SliceHeader)(unsafe.Pointer(&item.Body)).Cap = length
+
+一旦临时对象使用完毕, 可以立即释放内存:
+
+    if item.alloc != nil {
+        cmem.Free(item.alloc)
+        item.alloc = nil
+    }
+
+另外, 为了防止内存泄露(某些情况下漏了主动是否内存), 可以使用runtime的Finalize机制来释放内存: 
+
+    runtime.SetFinalizer(item, func(item *Item) {
+        if item.alloc != nil {
+            cmem.Free(item.alloc)
+            item.alloc = nil
+        }
+    })
+
+通过这种简单策略, 可以大大减少这种大的临时对象对内存的消耗.
