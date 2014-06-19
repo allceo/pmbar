@@ -30,7 +30,9 @@ Hello, I am your first Markdown document within **StackEdit**[^stackedit]. Don't
     设置一个密码，并再次输入确认(这里不建议设置，方便本地使用)
     Public RSA Key的保存路径：c:\users\username\.ssh\id_rsa.pub
     将Public Key告知Github
-    请首先注册一个github账号，Home Page：https://github.com/ 。然后进入Account Settings页面，打开SSH Keys，点击“Add SSH Key”。打开c:\users\username\.ssh\id_rsa.pub，把里面的内容全部Copy到Key对应的输入框内，点击“Add Key”。
+    请首先注册一个github账号，Home Page：https://github.com/ 。
+    然后进入Account Settings页面，打开SSH Keys，点击“Add SSH Key”。
+    打开c:\users\username\.ssh\id_rsa.pub，把里面的内容全部Copy到Key对应的输入框内，点击“Add Key”。
 ```
 
 Documents
