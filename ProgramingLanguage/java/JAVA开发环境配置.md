@@ -5,6 +5,8 @@ JAVA开发环境配置
 --------------
  - 下载Eclipse IDE for Java EE Developers
    https://www.eclipse.org/downloads/ 
+ - Eclipse汉化文件下载
+   http://www.eclipse.org/babel/downloads.php
  - 下载Apache Maven（Maven 3.2.1 (Binary zip)） 
    http://maven.apache.org/download.cgi
  - 下载JDK(jdk-7u51-windows-i586.exe)
