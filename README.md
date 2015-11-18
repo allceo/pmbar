@@ -28,5 +28,18 @@ Welcome to My PMBar!
 > - 然后进入Account Settings页面，打开SSH Keys，点击“Add SSH Key”。
 > - 打开c:\users\username\.ssh\id_rsa.pub，把里面的内容全部Copy到Key对应的输入框内，点击“Add Key”。
 
+ 5. 配置代理
+> - 设置代理：git config --global http://proxy.yourname.com:8080
+> - 如果需要用户名密码：git config –global http.proxy http://user:password@proxy.yourname.com:8080
+> - 查看设置是否生效：git config --get --global http.proxy
+> - 删除代理设置：git config --system (或 --global 或 --local) --unset http.proxy
+
+ 6. 异常处理
+> - 提示unable to get local issuer certificate
+> - git config --global http.sslVerify false
+
+ 7. 配置文件位置
+> - 代理等配置：%HOMEPATH%\.gitconfig
+> - 密钥：%HOMEPATH%\.ssh
 
   [1]: https://github.com/msysgit/msysgit/releases/
