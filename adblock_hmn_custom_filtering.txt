@@ -1,0 +1,20 @@
+[Adblock Plus 2.0]
+! Checksum: 11RPCEDGZ/OCg+eH0utdnA
+! Version: 202205090355
+! Title: 我的自定义过滤规则
+! Last modified: 09 May 2022 03:55 UTC
+! Expires: 1 days (update frequency)
+! Homepage: https://github.com/easylist/easylistchina/
+!
+! 我的自定义过滤规则
+inoreader.com###sinner_container
+inoreader.com##.ad_title.ad_title_centered
+inoreader.com###leaderboard_ad-5fc19ace97f0f
+inoreader.com##.block_article_ad.leaderboard_ad.ad_size_leaderboard.sinner
+52pojie.cn##.dnch_eo_pt
+360doc.com##div[style="background: rgb(0, 0, 0); position: fixed; opacity: 0.5; margin: 0px; padding: 0px; left: 0px; top: 0px; z-index: 9999; width: 1387px; height: 757px;"]
+blog.csdn.net##div[style="width:100%; height:100%; background-image: url(https://img-bss.csdn.net/1610683242960.png); background-size: auto 80px;background-repeat: no-repeat; background-position: center center;"]
+blog.csdn.net##.toolbar-advert-default
+pypandas.cn##a[style="display: block; width: 100%; height: 100%; text-decoration: none; padding: 10px 40px 10px 40px;"]
+his.huawei.com##.aurora-popup__wrapper
+zhihu.com##div[class="ZVideoItem-video"]
