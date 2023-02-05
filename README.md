@@ -52,7 +52,7 @@ Welcome to My PMBar!
 
 - [自动武道](https://github.com/mapleobserver/wsmud-script/blob/master/自动武道.flow.txt)
 - [自动追捕](https://github.com/mapleobserver/wsmud-script/blob/master/自动追捕.flow.txt)
-- - [自动襄阳(扫墙版)](https://github.com/mapleobserver/wsmud-script/blob/master/襄阳/自动襄阳(扫墙版).flow.txt)
+- [自动襄阳(扫墙版)](https://github.com/mapleobserver/wsmud-script/blob/master/襄阳/自动襄阳(扫墙版).flow.txt)
 - [快速扫荡](https://github.com/mapleobserver/wsmud-script/blob/master/副本/快速扫荡.flow.txt)
 - [一键学习](https://github.com/mapleobserver/wsmud-script/blob/master/提升/一键学习.flow.txt)
 - [精确练习](https://github.com/mapleobserver/wsmud-script/blob/master/提升/精确练习.flow.txt)
