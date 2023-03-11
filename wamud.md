@@ -67,7 +67,7 @@
 @print 导入触发：<ord>红boss报告</ord>
 @js unsafeWindow.TriggerCenter.remove("红boss报告")
 @await 350
-@js Server.importTrigger("(rboss)")
+@js Server.importTrigger("白三三·红boss报告·触发@a20975c8f87c9a0cb34fa58363cb6608")
 
 @print 导入触发：<hic>卸武自装</hic>
 @js unsafeWindow.TriggerCenter.remove("卸武自装")
